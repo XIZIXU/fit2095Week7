@@ -101,16 +101,14 @@ module.exports = {
 
     //Fetch the number
     fetchTheNum: function(req,res){
-        Actor.findOne({_id:req.params.id}
-            .populate('movies')
-            .exec(function(err,actor){
-                if(err) return res.status(400).json(err);
-                if(!actor){
-                    return res.status(400).json();
-                }
-                else{
-                    res.json(actor.movies.length);
-                }
-            }));
-    }
+        Actor.findOne({_id:req.params.id},function(err,actor){
+            if(err) {return res.status(400).json(err);}
+            if(!actor){
+                return res.status(400).json();
+            }
+            else{
+                res.json(actor.movies.length);
+            }
+        });
+    },
 };
