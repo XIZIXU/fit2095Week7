@@ -5,8 +5,6 @@ const mongoose = require("mongoose");
 const actors = require("./routers/actor");
 const movies = require("./routers/movie");
 
-// This is a test
-
 const app = express();
 app.listen(8080);
 
@@ -29,6 +27,7 @@ app.put("/actors/:id", actors.updateOne);
 app.post("/actors/:id/movies", actors.addMovie);
 app.delete("/actorsAndMovies/:id", actors.deleteOneAndMovies); //task 2
 app.put('/actors/:actorId/:movieId', actors.removeMovie);//task 4
+app.get("/actorsMovieNumber/:actorId",actors.fetchTheNum);
 
 // Movie RESTFul endpoints
 app.get("/movies", movies.getAll);
